@@ -1,0 +1,128 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Login & Registration Page">
+        <meta name="author" content="Sam Le">
+
+        <title>Register and Log In</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+    <body class="bg-white">
+
+        <nav class="navbar navbar-dark" style="height:5%;background-color:#b2bace">
+        </nav>
+
+        <div class="row" name="main row" style="height:90%;">
+            <div class="col-7" style="background-color:#f2f6ff;">
+                <div class="row">
+                    <div class="col"></div>
+
+                    <div class="col pt-5">
+                        <div style="width: 75%">
+                            <h2 class="mb-3" style="color:#001c5d">User Registration</h2>
+
+                            <div class="col" style="display:{{request.session.registration_message}}">
+                                {% if messages %}
+                                <ul class="messages border border-info text-muted rounded-lg p-3" style="width: 90%" id="messages">
+                                    {% for message in messages %}
+                                        <li {% if message.tags %} class="{{ message.tags }} ml-3"{% endif %}> {{message}} </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+
+                            <div class="ml-2" style="width:30%; min-width: 200px; color:#001c5d">
+                                <form action="/createuser" method="POST" id="registrationform">
+                                    {% csrf_token %}
+                                    <input type="hidden" id="custId" id="register_login" name="register_login" value="register">
+
+                                    <label for="first_name" class="mt-2">First Name: </label>
+                                    <input type="text" class="form-control border-0" id="first_name" name="first_name" placeholder="First Name" required="">
+
+                                    <label for="network" class="mt-2">Last Name: </label>
+                                    <input type="text" class="form-control border-0" id="last_name" name="last_name" placeholder="Last Name" required="">
+
+                                    <label for="email" class="mt-2">Email: </label>
+                                    <input type="text" class="form-control border-0" id="email" name="email" placeholder="Email" required="">
+                                    
+                                    <label for="birthday" class="mt-2">Birthday: </label>
+                                    <input class="form-control border-0" type="date" id="birthday" name="birthday" required="">
+
+                                    <label for="password" class="mt-2">Password: </label>
+                                    <input type="password" class="form-control border-0" id="password" name="password" required="">
+
+                                    <label for="confirm_password" class="mt-2">Confirm Password: </label>
+                                    <input type="password" class="form-control border-0" id="confirm_password" name="confirm_password" required="">
+                                    <div class="text-center">
+                                        <button class="btn btn-info btn-med mt-5" type="submit">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col"></div>
+                </div>
+            </div>
+
+            <div class="col-5" style="background-color:#fff2f4">
+                <div class="row">
+                    <div class="col"></div>
+
+                    <div class="col pt-5">
+
+                        <div style="width: 90%">
+                            <h2 class="mb-3" style="color:#001c5d">User Login</h2>
+
+                            <div class="col ml-3" style="display:{{request.session.login_message}}">
+                                {% if messages %}
+                                <ul class="messages border border-info text-muted rounded-lg" style="width: 90%">
+                                    {% for message in messages %}
+                                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}> {{message}} </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                            <div class="ml-3 mr-3 text-dark"  style="width:50%; min-width: 200px; color:#001c5d">
+                                <form action="/login" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" id="custId" name="register_login" value="login">
+
+                                    <label for="email" class="mt-2">Email: </label>
+                                    <input type="text" class="form-control border-0" name="email" placeholder="Email" required="">
+
+                                    <label for="password" class="mt-2">Password: </label>
+                                    <input type="password" class="form-control border-0" name="password" required="">
+                                    <div class="text-center">
+                                        <button class="btn btn-info btn-med mt-5" type="submit">Log In</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col"></div>
+                </div>
+        </div>
+
+    </div>
+    <footer class="footer" style="background-color: #dec1c9; height: 5%;">
+        <div class="container text-center pt-1">
+          <span class="lead text-light">Registration & Login</span>
+        </div>
+      </footer>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="../../assets/js/vendor/popper.min.js"></script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+
+    </body>
+</html>

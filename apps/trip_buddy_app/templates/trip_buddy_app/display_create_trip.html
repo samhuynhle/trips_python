@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Create a New Trip!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </head>
+
+    <body style="background-color:#f2f6ff">
+
+      <nav class="navbar navbar-dark" style="height: 5%; min-height: 75px;background-color:#b2bace">
+        <div class="col">
+            <h3 style="color:#001c5d"> Hello, {{ current_user.first_name }}! Create at Trip!</h3>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col-1 text-right">
+          <a href="/logout" class="btn btn-med btn-info">Log Out</a>
+        </div>
+      </nav>
+
+      <div class="row">
+        <!--Column 1-->
+        <div class="col-1"></div>
+        <div class="col-6 pt-5">
+            <div>
+
+                    {% if messages %}
+                    <ul class="messages border border-warning text-muted" style="width: 50%" id="messages">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}> {{message}} </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                <form action="/trips/create" method="POST">
+                    {% csrf_token %}
+
+                        <h4 for="destination" class="text-muted mt-4">Destination: </h4>
+                        <input type="text" class="form-control" name="destination" placeholder="Destination" required="">
+
+                        <h4 for="start_date" class="text-muted mt-4">Start Date: </h4>
+                        <input class="form-control" type="date" name="start_date" required="">
+
+                        <h4 for="end_date" class="text-muted mt-4">End Date: </h4>
+                        <input class="form-control" type="date" name="end_date" required="">
+
+                        <h4>Plan: </h4>
+                        <textarea rows="5" cols="50" name="plan" required="" class="text-muted pl-2"></textarea>
+
+                        <input type="hidden" name="user_id" value="{{current_user.id}}">
+                        
+                    <div>
+                        <div class="col-md-6 mb-3 text-center">
+                                <a class="btn btn-info btn-med mt-5" href="/dashboard">Cancel</a>
+                        </div>
+                        <div class="col-md-6 mb-3 text-center">
+                            <button class="btn btn-info btn-med mt-5" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="../../assets/js/vendor/popper.min.js"></script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

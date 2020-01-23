@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Successful Registartion & Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </head>
+
+    <body style="background-color:#f2f6ff">
+
+      <nav class="navbar navbar-dark" style="height: 5%; min-height: 75px;background-color:#b2bace">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col text-right">
+          <a href="/logout" class="btn btn-med btn-info">Log Out</a>
+        </div>
+      </nav>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col text-center mt-5">
+          <div class="cover-container d-flex h-100 mx-auto flex-column">
+            <div this_is_for="The Text">
+                <h1 class="mb-5">Succes!</h1>
+                <p class="lead">Welcome, {{ show.first_name }} {{ show.last_name}}!</p>
+                <p class="lead">You have successfully registered (or logged in)!</p>
+                <p class="lead">Your User ID is {{ show.id }}</p>
+                </p>
+            </div>
+            <div this_is_for="The Button" class="text-center mt-5">
+                <a href='/dashboard' class="btn btn-med btn-info">Go to Trip Buddy Application!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="../../assets/js/vendor/popper.min.js"></script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
